@@ -6,17 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import be.abis.exercise.model.Course;
-import be.abis.exercise.service.CourseService;
+//import be.abis.exercise.service.CourseService;
+import be.abis.exercise.service.TrainingService;
 
 @Controller
 public class AppController {
 
 	@Autowired
-	CourseService courseService;
+	TrainingService trainingService;
 	
 	@GetMapping("/")
 	public String showCourse(Model model) {
-		Course c = courseService.findCourse(7900);
+		Course c = trainingService.findCourse(7900);
 		model.addAttribute("course",c);
 		return "course";
 	}

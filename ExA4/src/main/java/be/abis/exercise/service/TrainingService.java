@@ -23,5 +23,7 @@ public interface TrainingService {
 	public void deletePerson(int id);
 	
 	public void changePassword(Person p, String newPswd) throws IOException;
+
+	Course findCourse(int id);
 	
 }

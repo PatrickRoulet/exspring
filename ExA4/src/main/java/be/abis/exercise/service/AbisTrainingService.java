@@ -10,17 +10,21 @@ import org.springframework.stereotype.Service;
 import be.abis.exercise.exception.EnrollException;
 import be.abis.exercise.model.Course;
 import be.abis.exercise.model.Person;
-import be.abis.exercise.repository.CourseRepository;
 import be.abis.exercise.repository.PersonRepository;
 
 @Service
 public class AbisTrainingService implements TrainingService {
 	
 	@Autowired
-	CourseRepository CourseRepository;
+	CourseService courseService;
 	
 	@Autowired
 	PersonRepository personRepository;
+
+	@Override
+	public Course findCourse(int id) {
+		return courseService.findCourse(id);
+	}
 
 	@Override
 	public Person findPerson(int id) {
