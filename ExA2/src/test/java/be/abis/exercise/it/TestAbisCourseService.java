@@ -1,7 +1,8 @@
 package be.abis.exercise.it;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +26,7 @@ public class TestAbisCourseService {
 
 	@Test
 	public void checkCourse7900HasPriceHigher400() {
-		assertTrue(courseService.findCourse(7900).getPricePerDay() > 400.0);
+		assertThat(courseService.findCourse(7900).getPricePerDay(), greaterThan(400.0));
 	}
 
 }
