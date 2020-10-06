@@ -21,7 +21,7 @@ public class TestAbisCourseService {
 
 	@Test
 	public void findTitleWithId7900() {
-		assertEquals("7900", courseService.findCourse(7900).getCourseId());
+		assertEquals("Workshop SQL", courseService.findCourse(7900).getShortTitle());
 	}
 
 	@Test
