@@ -70,11 +70,11 @@ public class AppController {
 	
 	@PostMapping("/findcourse")
 	public String findCourse(Model model, Course c) {
-		courseToSearch = courseService.findCourse(c.getCourseId());
+		int courseIdInt = Integer.parseInt(c.getCourseId());
+		courseToSearch = courseService.findCourse(courseIdInt);
 		model.addAttribute("course",courseToSearch);
-		System.out.println("Course 1"+courseService.findAllCourses().get(0).getShortTitle());
-		System.out.println("Course : id "+c.getCourseId()+" - "+courseToSearch);
-		return "redirect:/findcourse";
+		System.out.println("Course : id "+c.getCourseId()+" - "+courseToSearch.getShortTitle());
+		return "findcourse";
 	}
 
 }
