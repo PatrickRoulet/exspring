@@ -36,11 +36,6 @@ public class AppController {
 		return "welcome";
 	}
 	
-	@PostMapping("/welcome")
-	public String chooseRef(Model model) {
-		return "redirect:/course";
-	}
-	
 	@GetMapping("/course")
 	public String showCourse(Model model) {
 		return "course";
