@@ -10,16 +10,12 @@
 </head>
 <body>
 	<div class="container">
-		<form action="#" method="post" th:action="@{/welcome}"
-			th:object="${person}">
-			<h2 class="mt-4">
-				Welcome <span th:text="*{firstName}" />
-			</h2>
-			<hr />
-		</form>
 		<p>
-			<a href="http://localhost/exercise/course.html">Search for courses</a><br />
-			<a href="course.html">Person administration</a><br />
+			<h2 class="mt-4">
+				Welcome <span th:text="${person.firstName}" />
+			</h2>
+			<a href="http://localhost/exercise/course">Search for courses</a><br />
+			<a href="course">Person administration</a><br />
 		</p>
 	</div>
 </body>
