@@ -23,6 +23,7 @@ public class AppController {
 	CourseService courseService;
 	
 	Person loggedInPerson;
+	Course courseToSearch;
 	
 	@GetMapping("/")
 	public String showPerson(Model model) {
@@ -35,6 +36,11 @@ public class AppController {
 	public String submitPassword(Model model, Person p) {
 		loggedInPerson = trainingService.findPerson(p.getEmailAddress(), p.getPassword());
 		return "redirect:/welcome";
+	}
+	
+	@PostMapping("/logout")
+	public String logout(Model model) {
+		return "redirect:/";
 	}
 	
 	@GetMapping("/welcome")
@@ -53,6 +59,22 @@ public class AppController {
 		List<Course> courses = courseService.findAllCourses();
 		model.addAttribute("courses",courses);
 		return "allcourses";
+	}
+	
+	@GetMapping("/findcourse")
+	public String findCourse(Model model) {
+		Course c = new Course();
+		model.addAttribute("course",c);
+		return "findcourse";
+	}
+	
+	@PostMapping("/findcourse")
+	public String findCourse(Model model, Course c) {
+		courseToSearch = courseService.findCourse(c.getCourseId());
+		model.addAttribute("course",courseToSearch);
+		System.out.println("Course 1"+courseService.findAllCourses().get(0).getShortTitle());
+		System.out.println("Course : id "+c.getCourseId()+" - "+courseToSearch);
+		return "redirect:/findcourse";
 	}
 
 }

@@ -17,9 +17,11 @@
 			<a href="course">Search for courses</a><br />
 			<a href="course">Person administration</a><br />
            <div>
+		<form action="#" method="post" th:action="@{/logout}" th:object="${person}">
                <div class = "col-sm-10">
-                  <button type = "submit" class = "btn btn-primary" href="#">Logout</button>
-               </div>            
+                  <button type = "submit" class = "btn btn-primary">Logout</button>
+               </div>
+               </form>  
             </div>
 		</p>
 	</div>

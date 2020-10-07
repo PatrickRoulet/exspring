@@ -15,6 +15,7 @@
 		<table class="table">
 			<thead class="thead-light">
 				<tr>
+					<th class="text-left">ID</th>
 					<th class="text-left">Title</th>
 					<th class="text-left">Nb days</th>
 					<th class="text-left">Price/day</th>
@@ -22,6 +23,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="course : ${courses}">
+					<td th:text="${course.courseId}"></td>
 					<td th:text="${course.shortTitle}"></td>
 					<td th:text="${course.numberOfDays}"></td>
 					<td th:text="${course.pricePerDay}"></td>
