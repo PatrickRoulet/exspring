@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width = device-width, initial-scale = 1, shrink-to-fit = no">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<title>Spring exercise</title>
+</head>
+<body>
+	<div class="container">
+		<form action="#" method="post" th:action="@{/welcome}"
+			th:object="${person}">
+			<h2 class="mt-4">
+				Welcome <span th:text="*{firstName}" />
+			</h2>
+			<hr />
+		</form>
+		<p>
+			<a href="http://localhost/exercise/course.html">Search for courses</a><br />
+			<a href="course.html">Person administration</a><br />
+		</p>
+	</div>
+</body>
+</html>
