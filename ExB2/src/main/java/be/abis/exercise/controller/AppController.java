@@ -70,11 +70,22 @@ public class AppController {
 	
 	@PostMapping("/findcourse")
 	public String findCourse(Model model, Course c) {
-		int courseIdInt = Integer.parseInt(c.getCourseId());
-		courseToSearch = courseService.findCourse(courseIdInt);
+		String courseIdString = c.getCourseId();
+		if (courseIdString == null || courseIdString.isEmpty()) {
+			courseToSearch = courseService.findCourse(c.getShortTitle());
+		} else {
+			courseToSearch = courseService.findCourse(Integer.parseInt(courseIdString));			
+		}
 		model.addAttribute("course",courseToSearch);
-		System.out.println("Course : id "+c.getCourseId()+" - "+courseToSearch.getShortTitle());
 		return "findcourse";
+		
+	}
+	
+	@PostMapping("/newcoursesearch")
+	public String newCourseSearch(Model model) {
+		Course c = new Course();
+		model.addAttribute("course",c);
+		return "redirect:findcourse";
 	}
 
 }
