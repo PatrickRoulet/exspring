@@ -1,8 +1,12 @@
 package be.abis.exercise.model;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import be.abis.exercise.validation.ValidAge;
 
 public class Person {
 	
@@ -13,12 +17,16 @@ public class Person {
 	
 	private String lastName;
 	
+	@NotEmpty (message="Please enter the age")
+	@ValidAge
 	private int age;
 	
 	@NotEmpty( message="Please enter the email")
+	@Email(message="Please enter a valid email address")
 	private String emailAddress;
 	
 	@NotEmpty( message="Please enter the password")
+	@Size(min=6, message="Password should have minimum 6 characters")
 	private String password;
 	
 	private String language;

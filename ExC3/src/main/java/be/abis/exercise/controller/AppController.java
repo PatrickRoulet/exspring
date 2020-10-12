@@ -61,22 +61,21 @@ public class AppController {
 	}
 	
 	@GetMapping("/changepassword")
-	public String showChangePassword(Model model, Person p) {
+	public String showChangePassword(Model model, Person p, BindingResult bindingResult) {
 		try {
 			loggedInPerson = trainingService.findPerson(p.getEmailAddress(), p.getPassword());
 		} catch (personNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			bindingResult.rejectValue("emailAddress", "", "Email and/or password not found");
+			return "changepassword";
 		}
 		model.addAttribute("person",loggedInPerson);
-		model.addAttribute("newPswd","");
 		return "changepassword";
 	}
 	
 	@PostMapping("/changepassword")
-	public String changePassword(Model model, Person p, String newPswd) {
+	public String changePassword(Model model, Person p) {
 		try {
-			trainingService.changePassword(p, newPswd);
+			trainingService.changePassword(p, p.getPassword());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
